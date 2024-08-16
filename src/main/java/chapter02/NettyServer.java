@@ -18,11 +18,11 @@ public class NettyServer {
     public static void main(String[] args) {
         ServerBootstrap serverBootstrap = new ServerBootstrap();
 
-        NioEventLoopGroup boss = new NioEventLoopGroup();
-        NioEventLoopGroup worker = new NioEventLoopGroup();
+        NioEventLoopGroup boss = new NioEventLoopGroup();  // 线程组, 接收新连接
+        NioEventLoopGroup worker = new NioEventLoopGroup();  // 线程组, 处理数据
         serverBootstrap.group(boss, worker)
-                .channel(NioServerSocketChannel.class)
-                .childHandler(new ChannelInitializer<NioSocketChannel>() {
+                .channel(NioServerSocketChannel.class)  // 设置IO模型
+                .childHandler(new ChannelInitializer<NioSocketChannel>() {  // 处理数据逻辑
                     @Override
                     protected void initChannel(NioSocketChannel ch) throws Exception {
                         ch.pipeline().addLast(new StringDecoder());

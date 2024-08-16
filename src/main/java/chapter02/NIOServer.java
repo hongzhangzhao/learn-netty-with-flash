@@ -18,9 +18,12 @@ import java.util.Set;
 public class NIOServer {
 
     public static void main(String[] args) throws IOException {
+
+        // 两个Selector(轮询器), 一个负责轮询是否有新连接并将连接注册到clientSelector, 一个负责轮询连接是否有数据可读
         Selector serverSelector = Selector.open();
         Selector clientSelector = Selector.open();
 
+        // 轮询新连接
         new Thread(() -> {
             try {
                 ServerSocketChannel listenerChannel = ServerSocketChannel.open();
@@ -54,6 +57,7 @@ public class NIOServer {
             }
         }).start();
 
+        // 轮询连接是否有数据可读
         new Thread(() -> {
             try {
                 while (true) {

@@ -16,20 +16,25 @@ import lombok.extern.slf4j.Slf4j;
 public class NettyServer {
 
     public static void main(String[] args) {
-        NioEventLoopGroup boosGroup = new NioEventLoopGroup();
-        NioEventLoopGroup workerGroup = new NioEventLoopGroup();
+        NioEventLoopGroup boosGroup = new NioEventLoopGroup();  // 接收新连接
+        NioEventLoopGroup workerGroup = new NioEventLoopGroup();  // 处理数据
 
-        ServerBootstrap serverBootstrap = new ServerBootstrap();
+        ServerBootstrap serverBootstrap = new ServerBootstrap();  // 负责启动服务端
         serverBootstrap.group(boosGroup, workerGroup)
                 .channel(NioServerSocketChannel.class)
                 .childHandler(
-                        new ChannelInitializer<NioSocketChannel>() {
+                        new ChannelInitializer<NioSocketChannel>() {  // NioSocketChannel 对一个连接的抽象
                             @Override
                             protected void initChannel(NioSocketChannel nioSocketChannel) throws Exception {
 
                             }
                         }
                 );
+
+//        serverBootstrap.bind(8000);  // 启动服务端, 以上是服务端最小化部署
+
+        // 以上是服务端最小化
+
         // handler 方法指定服务器启功过程中的逻辑。
         serverBootstrap.handler(
                 new ChannelInitializer<NioServerSocketChannel>() {

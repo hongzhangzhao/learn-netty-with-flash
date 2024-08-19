@@ -5,7 +5,7 @@ import chapter08.packet.Packet;
 import lombok.Data;
 
 @Data
-public class LoginRequestPacket extends Packet {
+public class LoginRequestPacket extends Packet {  // 登录packet
 
     private String userId;
 

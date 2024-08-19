@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 public abstract class Packet {
 
-    private Byte version = 1;
+    private Byte version = 1;  // 版本号
 
     public abstract Byte getCommand();
 }

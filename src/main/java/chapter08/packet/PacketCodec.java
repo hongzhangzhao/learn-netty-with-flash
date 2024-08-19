@@ -20,7 +20,7 @@ public class PacketCodec {
     private PacketCodec() {
     }
 
-    public ByteBuf encode(Packet packet) {
+    public ByteBuf encode(Packet packet) {  // 封装
         // 获取 ByteBuf 和 对象字节数组
         ByteBuf byteBuf = ByteBufAllocator.DEFAULT.buffer();
         byte[] bytes = Serializer.DEFAULT.serializer(packet);
@@ -46,7 +46,7 @@ public class PacketCodec {
         return byteBuf;
     }
 
-    public Packet decode(ByteBuf byteBuf) {
+    public Packet decode(ByteBuf byteBuf) {  // 解析
         // 跳过魔数
         byteBuf.skipBytes(4);
 

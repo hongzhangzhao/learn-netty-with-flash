@@ -6,5 +6,5 @@ package chapter08.packet;
  */
 
 public interface Command {
-    Byte LOGIN_REQUEST = 1;
+    Byte LOGIN_REQUEST = 1;  // 指令类型
 }

@@ -65,6 +65,7 @@ public class NettyServer {
         bind(serverBootstrap, 1000);
     }
 
+    // 监听器 监听端口绑定结果
     private static void bind(final ServerBootstrap serverBootstrap, final int port) {
         serverBootstrap.bind(port).addListener(future -> {
             if (future.isSuccess()) {

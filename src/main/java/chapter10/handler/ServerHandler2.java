@@ -24,8 +24,6 @@ public class ServerHandler2 extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         ByteBuf requestByteBuf = (ByteBuf) msg;
 
-        Packet packet = PacketCodec.INSTANCE.decode(requestByteBuf);
-
         System.out.println("");
 
 

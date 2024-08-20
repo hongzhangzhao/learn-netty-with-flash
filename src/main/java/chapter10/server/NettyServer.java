@@ -8,6 +8,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import lombok.extern.slf4j.Slf4j;
+import chapter10.handler.ServerHandler2;
 
 /**
  * @author Chanmoey
@@ -27,7 +28,8 @@ public class NettyServer {
                         new ChannelInitializer<NioSocketChannel>() {
                             @Override
                             protected void initChannel(NioSocketChannel nioSocketChannel) throws Exception {
-                                nioSocketChannel.pipeline().addLast(new ServerHandler());
+//                                nioSocketChannel.pipeline().addLast(new ServerHandler());
+                                nioSocketChannel.pipeline().addLast(new ServerHandler2());
                             }
                         }
                 );
